@@ -15,7 +15,7 @@ public class HelloSender {
 
     private final JmsTemplate jmsTemplate;
 
-    @Scheduled(fixedRate = 500)
+    @Scheduled(fixedRate = 1)
     public void sendMessage(){
 
         /**
@@ -23,17 +23,18 @@ public class HelloSender {
          * before sending to message queue
          */
 
-        System.out.println("Hello from JMS sender");
-        HelloJmsMessage message = HelloJmsMessage
-                .builder()
-                .id(UUID.randomUUID())
-                .message("Hi - JMS here!")
-                .build();
+        for(int i = 0; i<10; i++) {
 
-        jmsTemplate.convertAndSend(JmsConfig.MY_QUEUE, message);
+            System.out.println("Hello from JMS sender");
+            HelloJmsMessage message = HelloJmsMessage
+                    .builder()
+                    .id(UUID.randomUUID())
+                    .message("Hi - JMS here!")
+                    .build();
 
-        System.out.println("Message Sent!");
+            jmsTemplate.convertAndSend(JmsConfig.MY_QUEUE, message);
 
+            System.out.println("Message Sent!");
+        }
     }
-
 }
