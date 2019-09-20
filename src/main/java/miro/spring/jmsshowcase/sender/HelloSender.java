@@ -15,7 +15,7 @@ public class HelloSender {
 
     private final JmsTemplate jmsTemplate;
 
-    @Scheduled(fixedRate = 3000)
+    @Scheduled(fixedRate = 500)
     public void sendMessage(){
 
         /**
