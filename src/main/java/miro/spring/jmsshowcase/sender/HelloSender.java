@@ -15,7 +15,7 @@ public class HelloSender {
 
     private final JmsTemplate jmsTemplate;
 
-    @Scheduled(fixedRate = 1)
+    @Scheduled(fixedRate = 5000)
     public void sendMessage(){
 
         /**
@@ -23,7 +23,7 @@ public class HelloSender {
          * before sending to message queue
          */
 
-        for(int i = 0; i<10; i++) {
+        for(int i = 0; i<10000; i++) {
 
             System.out.println("Hello from JMS sender");
             HelloJmsMessage message = HelloJmsMessage
